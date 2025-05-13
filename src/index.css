@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2C3E50;      /* From tailwind.config.js */
+  --secondary: #16A085;    /* From tailwind.config.js */
+  --accent: #E67E22;        /* From tailwind.config.js */
+  --background: #F5F7FA;   /* From tailwind.config.js */
+  --textColor: #333333;    /* From tailwind.config.js */
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #d1d5db; /* gray-300 */
+  border-radius: 3px;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: #4b5563; /* gray-600 */
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af; /* gray-400 */
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280; /* gray-500 */
+}
+
+@layer base {
+  body {
+    @apply bg-background text-textColor;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-blue-600;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-green-600;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+  
+  .input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-md bg-white text-textColor focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+}
+
+/* Marker colors */
+.marker-red {
+  filter: hue-rotate(0deg) saturate(150%);
+}
+
+.marker-purple {
+  filter: hue-rotate(280deg) saturate(150%);  
+}
+
+.marker-yellow {
+  filter: hue-rotate(60deg) saturate(150%);
+}
+
+.marker-green {
+  filter: hue-rotate(120deg) saturate(150%);
+}
+
+/* Current location marker customization for violet */
+.marker-violet {
+  filter: hue-rotate(270deg) saturate(150%);
+}
+
+/* Keyframes for blob color animation */
+@keyframes blob-color-change {
+  0%, 100% {
+    background-color: var(--primary); /* #2C3E50 */
+  }
+  25% {
+    background-color: #22726A; /* Intermediate teal/blue-green */
+  }
+  50% {
+    background-color: var(--secondary); /* #16A085 */
+  }
+  75% {
+    background-color: #22726A; /* Intermediate teal/blue-green */
+  }
+}
+
+/* Utility class to apply blob color animation */
+.animate-blob-color {
+  animation: blob-color-change 10s infinite linear alternate; /* Using alternate for smoother back and forth */
+} 
